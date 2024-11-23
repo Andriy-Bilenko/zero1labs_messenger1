@@ -1,0 +1,7 @@
+
+{
+  "POOL_ADDRESS": "0xYourContractAddressHere",
+  "ERC20_ADDRESS": "0xYourERC20ContractAddressHere",
+  "NETWORK_URL": "http://localhost:8545",
+  "GATEWAY_URL": "http://localhost:5000"
+}

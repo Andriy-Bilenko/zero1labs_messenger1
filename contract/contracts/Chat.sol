@@ -7,7 +7,7 @@ import "./fhevm/lib/TFHE.sol";
 contract Chat {
     struct Transaction {
         eaddress sender;
-        euint8[] message;
+        ebytes256 message;
         eaddress receiver;
     }
 
@@ -17,7 +17,7 @@ contract Chat {
 
 
     // Function to send a message to another address
-    function send(euint8[] memory message, eaddress sender, eaddress receiver) public {
+    function send(ebytes256  message, eaddress sender, eaddress receiver) public {
         // Create a new transaction
         Transaction memory newTransaction = Transaction({
             sender: sender,
