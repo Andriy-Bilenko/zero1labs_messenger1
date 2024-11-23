@@ -8,6 +8,7 @@ async function main() {
 
   // Deploy the contract
   const contract = await TransactionStorage.deploy();
+  await contract.waitForDeployment();
   console.log("Contract deployed to:", contract.address);
 
   // Send a transaction from one address to another

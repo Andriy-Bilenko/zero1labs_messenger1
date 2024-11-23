@@ -1,11 +1,13 @@
 const { ethers } = require("hardhat");
 const { createInstance } = require("fhevmjs");
+const fs = require('fs'); // Import fs for file reading
+const path = require('path'); // Import path for resolving file paths
 
 //import fhevmjs from "fhevmjs";
 function readConfig() {
-    const configPath = path.resolve(__dirname, "config.json"); // Adjust path as necessary
-    const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
-    return config;
+  const configPath = path.resolve(__dirname, "config.json"); // Adjust path as necessary
+  const config = JSON.parse(fs.readFileSync(configPath, "utf8"));
+  return config;
 }
 
 async function main() {
@@ -14,7 +16,8 @@ async function main() {
 
   // Deploy the contract
   const contract = await TransactionStorage.deploy();
-  console.log("Contract deployed to:", contract.address);
+  await contract.waitForDeployment()
+  console.log("Contract deployed to:", await contract.getAddress());
 
   // Send a transaction from one address to another
   const [sender, receiver] = await ethers.getSigners();
